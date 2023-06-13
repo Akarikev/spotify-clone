@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
-
+import LikedImg from "@/public/images/liked.png";
+import { FaPlay } from "react-icons/fa";
 interface ListItemsProps {
   image: string;
   name: string;
@@ -19,6 +20,7 @@ const ListItems: FC<ListItemsProps> = ({ image, name, href }) => {
 
   return (
     <button
+      onClick={onClick}
       className="
   relative 
   group
@@ -41,7 +43,28 @@ const ListItems: FC<ListItemsProps> = ({ image, name, href }) => {
       
       "
       >
-        <Image />
+        <Image className="object-cover" fill src={image} alt="image" />
+      </div>
+      <p className="font-medium truncate py-5">{name}</p>
+      <div
+        className="
+      absolute
+      transition
+      opacity-0
+      rounded-full
+      flex
+      items-center
+      justify-center
+      bg-green-500
+      p-4
+      drop-shadow-md
+      right-5
+      group-hover:opacity-100
+      hover:scale-110
+      
+      "
+      >
+        <FaPlay />
       </div>
     </button>
   );
